@@ -1,0 +1,62 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+// Default mixins and settings -----------------
+@use "sass:color";
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(./fonts/source-sans-pro/source-sans-pro.css);
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor:          #ffffff;
+
+$mainColor:                #64666b;
+$headingColor:             #64666b;
+
+$mainFontSize:             42px;
+$mainFont:                 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont:              'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow:        none;
+$headingLetterSpacing:     normal;
+$headingTextTransform:     uppercase;
+$headingFontWeight:        600;
+$linkColor:                #99161b;
+$linkColorHover:           color.scale($linkColor, $lightness: 15%);
+$selectionBackgroundColor: color.scale($linkColor, $lightness: 25%);
+
+$heading1Size:             2.5em;
+$heading2Size:             1.6em;
+$heading3Size:             1.3em;
+$heading4Size:             1.0em;
+
+$overlayElementBgColor:    0, 0, 0;
+$overlayElementFgColor:    240, 240, 240;
+
+// Change text colors against dark slide backgrounds
+@include dark-bg-text-color(#ffffff);
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+// Custom ML
+.reveal {
+	font-weight: 300;
+}
+
+.reveal-viewport {
+	background:          #ffffff;
+	background-color:    var(--r-background-color);
+	background-image:    url(../../images/logo_ml.svg);
+	background-repeat:   no-repeat;
+	background-position: 2rem 2rem;
+	background-size:     150px auto;
+}
+
+

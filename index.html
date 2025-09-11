@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Modernes CSS in Contao nutzen | Vortrag Contao Konferenz 2025</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/custom_ml.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <!-- Titelfolie Vortrag -->
+        <section>
+            <h1>Modernes CSS in Contao nutzen</h1>
+            <p>Nutzung von Grid, Subgrid, Flex und Co in Contao</p>
+            <aside class="notes">
+                Hallo allerseits, heute möchte ich Euch zeigen, wie man modernes CSS in Contao nutzen kann.📝
+            </aside>
+        </section>
+
+        <!-- Einleitung -->
+        <section>
+            <!-- Über mich-->
+            <section>
+                <h2>Über mich</h2>
+                <ul>
+                    <li>seit 2010 Webdesigner (Freelancer)</li>
+                    <li>Forum: mlweb</li>
+                </ul>
+            </section>
+            <!-- Was erwartet Euch -->
+            <section>
+                <h2>Was erwartet Euch</h2>
+                <ul>
+                    <li>Komponenten eines Contao-Themes entwickeln</li>
+                    <li>moderne CSS-Eigenschaften</li>
+                    <li>CSS mit seinen neuen Möglichkeiten
+                        <ul>
+                            <li>Verschachtelung (Nesting)</li>
+                            <li>CSS-Variable</li>
+                        </ul>
+                    </li>
+                   <li>keine theoretische Abhandlung</li>
+                </ul>
+            </section>
+            <!-- Was benötigt Ihr -->
+            <section>
+                <h2>Was benötigt Ihr?</h2>
+                <ul>
+                    <li>IDE oder CSS-Editor
+                        <ul>
+                            <li>PHPStorm</li>
+                            <li>Visual Studio Code (kostenfreie)</li>
+                            <li>jeder CSS-Editor</li>
+                        </ul>
+                    </li>
+                    <li>Tool zum Komprimieren und Zusammenfassen z.B. <a href="https://lightningcss.dev/" target="_blank">Lightning CSS</a></li>
+                    <li>alternativ SCSS mit Gulp oder Webpack</li>
+                </ul>
+                <aside class="notes">
+                    Projekt in PHP-Storm kurz zeigen und erläutern, cqi - Einheit für Inline-Gröe (Breite) eines Containers 📝
+
+                </aside>
+            </section>
+        </section>
+
+        <!-- Das Seitenlayout -->
+        <section>
+            <!-- Titelfolie Seitenlayout -->
+            <section>
+                <h1>Das Seitenlayout</h1>
+                <p>CSS-Grid und Subgrid in Contao verwenden</p>
+            </section>
+            <!--Erläuterung CSS-Grid -->
+            <section>
+                <h2>CSS-Grid kurz erklärt</h2>
+                <ul>
+                    <li>zweidimensionales Gestaltungsraster bestehend aus Zeilen und Spalten</li>
+                    <li>Elemente darin können frei platziert werden</li>
+                    <li>automatische Platzierung ist ebenfalls möglich</li>
+                    <li>Raster wird im Elternelement durch <code>display:grid</code> festgelegt - Grid-Container</li>
+                    <li>alle direkten Kinder sind die Grid-Elemente</li>
+
+                </ul>
+            </section>
+            <!--Erläuterung Subgrid -->
+            <section>
+                <h3>Subgrid und verschachteltes Grid</h3>
+                <ul>
+                    <li>Grids können prinzipiell verschachtelt werden
+                        <ul>
+                            <li>dazu wird ein Grid-Element als Grid-Container erklärt</li>
+                            <li>dieses Grid ist völlig unabhängig vom übergeordneten Grid</li>
+                        </ul>
+                    </li>
+                    <li>Subgrid - übergeordnete Aufteilung in Spalten und/oder Reihen wird im verschachtelten Grid übernommen</li>
+                </ul>
+            </section>
+            <!-- CSS-Grid fürs Seitenlayout -->
+            <section>
+                <h2>CSS-Grid fürs Seitenlayout</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                       /* Wrapper */
+                        #wrapper {
+                            display             : grid;
+                            min-height          : 100vh;
+                            @supports ( min-height: 100dvh) {
+	                            min-height : 100dvh;
+                            }
+                            grid-template-rows  : min-content 1fr min-content;
+                            grid-template-areas :
+                                "header"
+                                "container"
+                                "footer";
+                        }
+
+                        /* Header */
+                        header {
+                            grid-area: header;
+                        }
+
+                        /* Container */
+                        #container {
+                            grid-area: container;
+                        }
+
+                        /* Footer */
+                        footer {
+                            grid-area: footer;
+                        }
+
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/seitenlayout-mit-grid.html📝
+                </aside>
+            </section>
+            <!-- Inhalt begrenzen -->
+            <section>
+                <h2>Inhalte zentrieren</h2>
+                <h3>Bisheriges Vorgehen</h3>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* bisheriges Vorgehen */
+                        .inside {
+                            width               : 1200px;
+                            margin-inline: auto;
+                            /* margin: 0 auto; */
+                        }
+                    </code>
+                </pre>
+                <aside class="notes">
+                    https://css.ml-webseiten.de/seitenlayout-zentriert.html📝
+                </aside>
+            </section>
+            <!-- Grid im Header - Schreibweise ohne Verschachtelung (Header) -->
+            <section>
+                <h2>Grid im Header</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* Header */
+                        header {
+                            grid-area: header;
+                        }
+                        header .inside {
+                            display               : grid;
+                            column-gap            : 1rem;
+                            grid-template-columns : minmax(.5rem, 1fr) minmax(0, 1200px) minmax(.5rem, 1fr);
+                        }
+                    </code>
+                </pre>
+            </section>
+            <!-- Grid im Header und Footer -->
+            <section>
+                <h2>Grid im Header und Footer</h2>
+                <h3>CSS mit Nesting</h3>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* Header */
+                        header {
+                            grid-area: header;
+                            & .inside {
+                                display               : grid;
+                                column-gap            : 1rem;
+                                grid-template-columns : minmax(.5rem, 1fr) minmax(0, 1200px) minmax(.5rem, 1fr);
+                            }
+                        }
+                        /* Footer */
+                        footer {
+                            grid-area: footer;
+                            & .inside {
+                                display               : grid;
+                                column-gap            : 1rem;
+                                grid-template-columns : minmax(.5rem, 1fr) minmax(0, 1200px) minmax(.5rem, 1fr);
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <!-- Grid und Subgrid in Main -->
+            <section>
+                <h2>Grid und Subgrid in Main</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* Main */
+                        main {
+                            & .inside {
+                                display               : grid;
+                                column-gap            : 1rem;
+                                grid-template-columns : minmax(.5rem, 1fr) minmax(0, 1200px) minmax(.5rem, 1fr);
+                                & > .mod_article {
+                                    grid-column           : 1 / -1;
+                                    display               : grid;
+                                    grid-template-columns : subgrid;
+                                    & > * {
+                                        grid-column : 2 / -2;
+                                    }
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/subgrid-im-seitenlayout.html 📝
+                </aside>
+            </section>
+            <!-- Elemente im Header und Footer -->
+            <section>
+                <h2>Elemente im Header und Footer</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* Header */
+                        header {
+                            grid-area: header;
+                            & .inside {
+                                display               : grid;
+                                column-gap            : 1rem;
+                                grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
+                            }
+                            & .logo {
+                                grid-column : 2 / span 3;
+                            }
+                            & .nav-wrapper {
+                                grid-column : 5 / span 9;
+                                justify-self: end;
+                            }
+                        }
+                        /* Footer */
+                        footer {
+                            grid-area: footer;
+                            & > .inside {
+                                display               : grid;
+                                column-gap            : 1rem;
+                                grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
+                                & .copyright {
+                                    grid-column : 2 / -2;
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <!-- 12er-Grid in Main -->
+            <section>
+                <h2>12er Grid für #main</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* Main */
+                        main {
+                            & > .inside {
+                                display               : grid;
+                                column-gap            : 1rem;
+                                grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
+                                & > .mod_article {
+                                    grid-column           : 1 / -1;
+                                    display               : grid;
+                                    grid-template-columns : subgrid;
+                                    & > * {
+                                        grid-column : 2 / -2;
+                                    }
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+                <aside class="notes">
+                    https://css.ml-webseiten.de/elemente-im-header-und-footer.html 📝
+                </aside>
+            </section>
+        </section>
+
+        <!-- Artikel und Inhaltselemente -->
+        <section>
+            <!-- Titelfolie Artikel und Inhaltselemente -->
+            <section>
+                <h1>Artikel und Inhaltselement</h1>
+                <p>Was ist ohne Templateanpassung machbar?</p>
+            </section>
+            <!-- Artikel mit Hintergrund -->
+            <section>
+                <h2>Artikel mit Hintergrund</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* Artikel */
+                        .mod_article {
+                            &.bg {
+                                padding-block: 1rem;
+                                color: var(--inverse);
+                                background-color: var(--secondary);
+                            }
+                        }
+                    </code>
+                </pre>
+                <aside class="notes">
+                    https://css.ml-webseiten.de//artikel-mit-hintergrund.html 📝
+                </aside>
+            </section>
+            <!-- Hilfsklassen festlegen -->
+            <section>
+                <h2>Hilfsklassen festlegen</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                         /* Hilfsklasse für volle Breite */
+                        .fullwidth {
+                            grid-column           : 1 / -1;
+                            display               : grid;
+                            grid-template-columns : subgrid;
+                            & > * {
+                                grid-column : 2 / -2;
+                            }
+                        }
+                        /* Hilfsklassen Hintergrundfarbe */
+                        .bg {
+                            padding-block: 2rem;
+                        }
+                        .bg--primary {
+                            background : var(--primary);
+                            color      : var(--inverse);
+                        }
+                        .bg--secondary {
+                            background : var(--secondary);
+                            color      : var(--inverse);
+                        }
+                        .bg--light {
+                            background : var(--neutral-light);
+                            color      : var(--clr);
+                        }
+                        .bg--dark {
+                            background : var(--neutral-dark);
+                            color      : var(--inverse);
+                        }
+
+                    </code>
+                </pre>
+            </section>
+            <!-- Textelemente gestalten -->
+            <section>
+                <h2>Textelement gestalten</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* Inhaltselement Text */
+                        .media--above,
+                        .media--below,
+                        .media--left,
+                        .media--right {
+                            display : grid;
+                            row-gap : 1rem;
+                        }
+                        .media--above,
+                        .media--below {
+                            & figure {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-column : 2 / span 5;
+                                }
+                            }
+                        }
+                        .media--left {
+                            & figure {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-column : 2 / span 5;
+                                }
+                            }
+                            & .rte {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-column : 7/ -2;
+                                }
+                            }
+                        }
+                        .media--right {
+                            & :first-child {
+                                order : 1;
+                            }
+                            & :nth-child(2) {
+                                order : 3;
+                            }
+                            & :nth-child(3) {
+                                order : 2;
+                            }
+                            & figure {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-column : 9 / -2;
+                                }
+                            }
+                            & .rte {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-column : 2/ span 7;
+                                    order       : 2;
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/inhaltselement-mit-hintergrund.html 📝
+                </aside>
+            </section>
+            <!-- Inhalte speziell platziert-->
+            <section>
+                <h2>Inhalte speziell platziert</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                         /* Inhalte speziell platziert */
+                        .content-text--special {
+                            /* Medium */
+                            @media only screen and (min-width : 48em) {
+                                grid-template-rows :  min-content 1fr;
+                            }
+                            &.bg {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    padding-block : 0;
+                                }
+                            }
+                            & h1,
+                            & h2,
+                            & h3,
+                            & h4,
+                            & h5,
+                            & h6 {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    padding-block-start : 2rem;
+                                    grid-column         : 7/ -2;
+                                }
+                            }
+                            & figure {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    max-width: unset;
+                                    grid-column : 1 / span 5;
+                                    grid-row    : 1 / -1;
+                                    order       : 1;
+                                }
+                            }
+                            & .rte {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-column       : 7/ -2;
+                                    padding-block-end : 2rem;
+                                }
+                            }
+                            & img {
+                                object-fit : cover;
+                                min-height     : 100%;
+                            }
+                        }
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/inhalte-speziell-platziert.html 📝
+                </aside>
+            </section>
+        </section>
+
+        <!-- Galerien -->
+        <section>
+            <!-- Titelfolie Galerien -->
+            <section>
+                <h1>Galerien</h1>
+            </section>
+            <!-- CSS-Grid für die Galerie -->
+            <section>
+                <h2>CSS-Grid für die Galerie</h2>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Inhaltselement Galerie */
+                        .content-gallery {
+                            & ul {
+                                display       : grid;
+                                gap           : .25rem;
+                                grid-template-columns : repeat(auto-fit, minmax(300px, 1fr));
+                            }
+                        }
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/galerie-mit-css-grid-v1.html 📝
+                </aside>
+            </section>
+            <!-- Fünfspaltige Galerie -->
+            <section>
+                <pre>
+                    <code data-trim date-noescape>
+                        .content-gallery {
+                            & ul {
+                                display       : grid;
+                                gap           : .25rem;
+                            }
+                        }
+                        .content-gallery--cols-5 {
+                            & ul {
+                                /* Small */
+                                @media only screen and (min-width : 37.5em) {
+                                    grid-template-columns : repeat(2, 1fr);
+                                }
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-template-columns : repeat(3, 1fr);
+                                }
+                                /* Large */
+                                @media only screen and (min-width : 64em) {
+	                                grid-template-columns : repeat(5, 1fr);
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <!-- Erläuterung Flex -->
+            <section>
+                <h2>Flexbox kurz erklärt</h2>
+                <ul>
+                    <li>eindimensionales Layoutmodell</li>
+                    <li>Spalten oder Reihen</li>
+                    <li>Umbruch am Zeilen- oder Spaltenende ist möglich</li>
+                    <li>Elternelement wird durch <code>display:flex</code> zum Flex-Container</li>
+                    <li>alle direkten Kinder sind die Flex-Elemente</li>
+                    <li>keine freie Platzierung der Elemente</li>
+                </ul>
+            </section>
+            <!-- Galerie mit Flex Variante 1-->
+            <section>
+                <h3>Galerie mit Flexbox Variante 1</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Inhaltselement Galerie */
+                        .content-gallery--flex {
+                            & ul {
+                                display : flex;
+                                flex-wrap : wrap;
+                                gap     : .5rem;
+                            }
+                            & li {
+                                flex: 0 1 200px ;
+                            }
+                        }
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/galerie-mit-flexbox-v1.html 📝
+                </aside>
+            </section>
+            <!-- Galerie mit Flex Variante 2-->
+            <section>
+                <h3>Galerie mit Flexbox Variante 2</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Inhaltselement Galerie */
+                        .content-gallery--flex {
+                            & ul {
+                                display : flex;
+                                flex-wrap : wrap;
+                                gap     : .5rem;
+                            }
+                            & li {
+                                flex: 1 1 200px ;
+                            }
+                        }
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/galerie-mit-flexbox-v2.html 📝
+                </aside>
+            </section>
+        </section>
+
+        <!-- Boxen -->
+        <section>
+            <!-- Titelfolie Boxen -->
+            <section>
+                <h1>Boxen</h1>
+            </section>
+            <!-- Boxen Variante 1-->
+            <section>
+                <h2>Textboxen Variante 1</h2>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Textelemente als Boxen */
+                        .content-text--box {
+                            container-type : inline-size;
+                            &.bg {
+                                padding-block-start : 0;
+                            }
+                            &.media--above,
+                            &.media--below,
+                            &.media--left,
+                            &.media--right {
+                                display   : flex;
+                                flex-flow : column;
+                                & h1,
+                                & h2,
+                                & h3,
+                                & h4,
+                                & h5,
+                                & h6 {
+                                    margin-block   : 1rem 0;
+                                    padding-inline : 1rem;
+                                }
+                                & figure {
+                                    width  : 100%;
+                                    margin : 0;
+                                    order  : -1;
+                                }
+                                & .rte {
+                                    padding : 1rem;
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <!-- Platzierung Boxen im Grid -->
+            <section>
+                <h3>Platzierung im Grid</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Platzierung Boxen im Grid */
+                        .content-text--box {
+                            &:first-of-type {
+                                /* Medium */
+                                @media only screen and (min-width: 48em) {
+                                    grid-column: 2 / span 6;
+                                }
+                                /* Large */
+                                @media only screen and (min-width: 64em) {
+                                    grid-column: 2 / span 3;
+                                }
+                            }
+                            &:nth-of-type(2) {
+                                /* Medium */
+                                @media only screen and (min-width: 48em) {
+                                    grid-column: 8 / span 6;
+                                }
+                                /* Large */
+                                @media only screen and (min-width: 64em) {
+                                    grid-column: 5 / span 3;
+                                }
+                            }
+                            &:nth-of-type(3) {
+                                /* Medium */
+                                @media only screen and (min-width: 48em) {
+                                    grid-column: 2 / span 6;
+                                }
+                                /* Large */
+                                @media only screen and (min-width: 64em) {
+                                    grid-column: 8 / span 3;
+                                }
+                            }
+
+                        }
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/textelemente-als-boxen-v1.html 📝
+                </aside>
+            </section>
+            <!-- Grid in Main verfeinern -->
+            <section>
+                <h3>Grid in Main verfeinern</h3>
+                <pre>
+                    <code data-trim data-noescape>
+                        /* Main */
+                        main {
+                            & > .inside {
+                                display               : grid;
+                                column-gap            : 1rem;
+                                grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
+                                & > .mod_article {
+                                    grid-column           : 1 / -1;
+                                    display               : grid;
+                                    grid-template-columns : subgrid;
+                                    & > * {
+                                        grid-column : 2 / -2;
+                                        /* Small */
+                                        @media only screen and (min-width : 37.5em) {
+                                            grid-column : var(--col-start, 2) / span var(--col-width, 12);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+                <aside class="notes">
+                    bevor wir uns der Platzierung der Inhaltselemente widmen, wollen wir das Grid verfeinern 📝
+                </aside>
+            </section>
+            <!-- Hilfsklassen Grid -->
+            <section>
+                <h3>Hilfsklassen Grid</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                        /* Platzierung im Grid */
+                        @media only screen and (min-width : 37.5em) {
+                            /* SPALTEN */
+                            /* Spalten-Anzahl*/
+                            .col-width-s-1 {
+                                --col-width : 1;
+                            }
+                            .col-width-s-2 {
+                                --col-width : 2;
+                            }
+                            .col-width-s-3 {
+                                --col-width : 3;
+                            }
+                            .col-width-s-4 {
+                                --col-width : 4;
+                            }
+                            .col-width-s-5 {
+                                --col-width : 5;
+                            }
+                            .col-width-s-6 {
+                                --col-width : 6;
+                            }
+                            .col-width-s-7 {
+                                --col-width : 7;
+                            }
+                            .col-width-s-8 {
+                                --col-width : 8;
+                            }
+                            .col-width-s-9 {
+                                --col-width : 9;
+                            }
+                            .col-width-s-10 {
+                                --col-width : 10;
+                            }
+                            .col-width-s-11 {
+                                --col-width : 11;
+                            }
+                            .col-width-s-12 {
+                                --col-width : 12;
+                            }
+                            .col-width-s-13 {
+                            --col-width : 13;
+                            }
+                            .col-width-s-14 {
+                                --col-width : 14;
+                            }
+                            /* Column Start */
+                            .col-start-s-1 {
+                                --col-start : 1;
+                            }
+                            .col-start-s-2 {
+                                --col-start : 2;
+                            }
+                            .col-start-s-3 {
+                                --col-start : 3;
+                            }
+                            .col-start-s-4 {
+                                --col-start : 4;
+                            }
+                            .col-start-s-5 {
+                                --col-start : 5;
+                            }
+                            .col-start-s-6 {
+                                --col-start : 6;
+                            }
+                            .col-start-s-7 {
+                                --col-start : 7;
+                            }
+                            .col-start-s-8 {
+                                --col-start : 8;
+                            }
+                            .col-start-s-9 {
+                                --col-start : 9;
+                            }
+                            .col-start-s-10 {
+                                --col-start : 10;
+                            }
+                            .col-start-s-11 {
+                                --col-start : 11;
+                            }
+                            .col-start-s-12 {
+                                --col-start : 12;
+                            }
+                            .col-start-s-13 {
+                                --col-start : 13;
+                            }
+                            .col-start-s-14 {
+                                --col-start : 14;
+                            }
+                        }
+
+                        /* Large */
+                        @media only screen and (min-width : 64em) {
+                            /* SPALTEN */
+                            /* Spalten-Anzahl */
+                            .col-width-1 {
+                                --col-width : 1;
+                            }
+                            .col-width-2 {
+                                --col-width : 2;
+                            }
+                            .col-width-3 {
+                                --col-width : 3;
+                            }
+                            .col-width-4 {
+                                --col-width : 4;
+                            }
+                            .col-width-5 {
+                                --col-width : 5;
+                            }
+                            .col-width-6 {
+                                --col-width : 6;
+                            }
+                            .col-width-7 {
+                                --col-width : 7;
+                            }
+                            .col-width-8 {
+                                --col-width : 8;
+                            }
+                            .col-width-9 {
+                                --col-width : 9;
+                            }
+                            .col-width-10 {
+                                --col-width : 10;
+                            }
+                            .col-width-11 {
+                                --col-width : 11;
+                            }
+                            .col-width-12 {
+                                --col-width : 12;
+                            }
+                            .col-width-13 {
+                                --col-width : 13;
+                            }
+                            .col-width-14 {
+                                --col-width : 14;
+                            }
+                            /* Columns Start */
+                            .col-start-1 {
+                            --col-start : 1;
+                            }
+                            .col-start-2 {
+                                --col-start : 2;
+                            }
+                            .col-start-3 {
+                                --col-start : 3;
+                            }
+                            .col-start-4 {
+                                --col-start : 4;
+                            }
+                            .col-start-5 {
+                                --col-start : 5;
+                            }
+                            .col-start-6 {
+                                --col-start : 6;
+                            }
+                            .col-start-7 {
+                                --col-start : 7;
+                            }
+                            .col-start-8 {
+                                --col-start : 8;
+                            }
+                            .col-start-9 {
+                                --col-start : 9;
+                            }
+                            .col-start-10 {
+                                --col-start : 10;
+                            }
+                            .col-start-11 {
+                                --col-start : 11;
+                            }
+                            .col-start-12 {
+                                --col-start : 12;
+                            }
+                            .col-start-13 {
+                                --col-start : 13;
+                            }
+                            .col-start-14 {
+                                --col-start : 14;
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <!-- Boxen Variante 2-->
+            <section>
+                <h2>Textboxen Variante 2</h2>
+                <h3>Verwendung der Elementgruppe</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Textboxen mit Elementgruppe */
+                        .content-gallery--flex {
+                            & ul {
+                                display : flex;
+                                flex-wrap : wrap;
+                                gap     : .5rem;
+                            }
+                            & li {
+                                flex: 1 1 200px ;
+                            }
+                        }
+                    </code>
+                </pre>
+
+                <aside class="notes">
+                    https://css.ml-webseiten.de/textelemente-als-boxen-v2.html 📝
+                </aside>
+            </section>
+        </section>
+
+        <!-- Zusammenfassung -->
+        <section>
+            <!-- Titelfolie Zusammenfassung  -->
+            <section>
+                <h1>Zusammenfassung</h1>
+            </section>
+            <!--Zusammenfassung -->
+            <section>
+                <ul>
+                    <li>modernes CSS erleichtert die Umsetzung eines Layouts</li>
+                    <li>Templates nur bei Bedarf anpassen</li>
+                    <li>Verwendung von Klassen fürs Styling
+                        <ul>
+                            <li>manuelles Eintragen der Klassen</li>
+                            <li>Einsatz einer Erweiterung um vorgefertigte Klassen wählbar zu machen
+                                <ul>
+                                    <li><a href="https://extensions.contao.org/?p=oveleon/contao-component-style-manager">Stylemanager von Oveleon</a></li>
+                                    <li><a href="https://extensions.contao.org/?q=style&pages=1&p=erdmannfreunde/theme-toolbox">Theme Toolbox von Erdmann und Freunde</a></li>
+                                    <li><a href="https://extensions.contao.org/?q=style&pages=1&p=pdir/css-style-selector-bundle">CSS Style Selector Fork von pdir</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- Danke für die Aufmerksamkeit -->
+        <section>
+            <h1>Danke für die Aufmerksamkeit</h1>
+        </section>
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+</script>
+
+</body>
+</html>
