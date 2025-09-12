@@ -33,9 +33,9 @@
             <section>
                 <h2>Was erwartet Euch</h2>
                 <ul>
-                    <li class="fragment">Komponenten eines Contao-Themes entwickeln</li>
-                    <li class="fragment">moderne CSS-Eigenschaften</li>
-                    <li class="fragment">CSS mit seinen neuen Möglichkeiten
+                    <li>Komponenten eines Contao-Themes entwickeln</li>
+                    <li>moderne CSS-Eigenschaften</li>
+                    <li>CSS mit seinen neuen Möglichkeiten
                         <ul>
                             <li>Verschachtelung (Nesting)</li>
                             <li>CSS-Variable</li>
@@ -45,7 +45,7 @@
                 <!-- Notizen -->
                 <aside class="notes">
                     <ul>
-                        <li>ich verwende grundsätzlich alle Eigenschaften, die von allen Major-Browsern unterstützt werden und insgesamt bei einer Unterstützung von über ca. 85% liegen</li>
+                        <li>ich verwende grundsätzlich alle Eigenschaften, die von allen Major-Browsern unterstützt werden und insgesamt bei einer Unterstützung von mindestens ca. 85% liegen</li>
                         <li>ich nutze seit einiger Zeit nativen CSS, also kein SCSS</li>
                         <li>keine theoretische Abhandlung, ihr solltet also Grundkenntnisse in CSS haben und insbesondere schon von Grid und Flex gehört haben</li>
                         <li>Markup von Contao kennen</li>
@@ -54,22 +54,25 @@
             </section>
             <!-- Was benötigt Ihr -->
             <section>
-                <h2>Was benötigt Ihr?</h2>
+                <h2>Was benötigt Ihr für die Entwicklung eines Themes?</h2>
                 <ul>
-                    <li class="fragment">IDE oder CSS-Editor
+                    <li>IDE oder CSS-Editor
                         <ul>
                             <li>PHPStorm</li>
                             <li>Visual Studio Code (kostenfreie)</li>
                             <li>jeder CSS-Editor</li>
                         </ul>
                     </li>
-                    <li class="fragment">Tool zum Komprimieren und Zusammenfassen z.B. Lightning CSS</li>
-                    <li class="fragment">alternativ SCSS mit Gulp oder Webpack</li>
+                    <li>Tool zum Komprimieren und Zusammenfassen z.B. Lightning CSS</li>
+                    <li>alternativ SCSS mit Gulp oder Webpack</li>
                 </ul>
                 <!-- Notizen -->
                 <aside class="notes">
-                    Projekt in PHP-Storm kurz zeigen und erläutern, cqi - Einheit für Inline-Gröe (Breite) eines Containers 📝
-
+                    <p>Projekt in PHP-Storm kurz zeigen und erläutern<br>
+                        Variable zeigen<br>
+                        clamp erläutern - responsive Größe zwischen zwei festgelegten Viewport-Breiten <br>
+                        auf clamp-Generatoren hinweisen <br>
+                        cqi - Einheit für Inline-Größe (Breite) eines Containers 📝 </p>
                 </aside>
             </section>
         </section>
@@ -978,6 +981,8 @@
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
     });
+    Reveal.configure({ showNotes: true });
+    Reveal.configure({ showNotes: 'separate-page' });
 </script>
 
 </body>
