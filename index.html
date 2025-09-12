@@ -33,7 +33,7 @@
             <section>
                 <h2>Was erwartet Euch</h2>
                 <ul>
-                    <li>Komponenten eines Contao-Themes entwickeln</li>
+                    <li>einige Komponenten eines Contao-Themes entwickeln</li>
                     <li>moderne CSS-Eigenschaften</li>
                     <li>CSS mit seinen neuen Möglichkeiten
                         <ul>
@@ -52,9 +52,9 @@
                     </ul>📝
                 </aside>
             </section>
-            <!-- Was benötigt Ihr -->
+            <!-- Was wird benötigt -->
             <section>
-                <h2>Was benötigt Ihr für die Entwicklung eines Themes?</h2>
+                <h2>Was wird benötigt?</h2>
                 <ul>
                     <li>IDE oder CSS-Editor
                         <ul>
@@ -196,7 +196,7 @@
                 <aside class="notes">
                     <ul>
                         <li>& - Nestingselektor, gibt die Beziehung zum Elternelement an</li>
-                        <li>ist bei Klassen und ID-Selektoren nicht zwingend erforderlich</li>
+                        <li>ist bei Klassen und ID-Selektoren nicht zwingend erforderlich, bei Typselektoren aber schon</li>
                         <li>ist nicht für alle modernen Browser erforderlich</li>
                     </ul>
                     ,
@@ -430,63 +430,7 @@
                     https://css.ml-webseiten.de/inhaltselement-mit-hintergrund.html 📝
                 </aside>
             </section>
-            <!-- Inhalte speziell platziert-->
-            <section>
-                <h2>Inhalte speziell platziert</h2>
-                <pre>
-                    <code data-trim data-noescape>
-                         /* Inhalte speziell platziert */
-                        .content-text--special {
-                            /* Medium */
-                            @media only screen and (min-width : 48em) {
-                                grid-template-rows :  min-content 1fr;
-                            }
-                            &.bg {
-                                /* Medium */
-                                @media only screen and (min-width : 48em) {
-                                    padding-block : 0;
-                                }
-                            }
-                            & h1,
-                            & h2,
-                            & h3,
-                            & h4,
-                            & h5,
-                            & h6 {
-                                /* Medium */
-                                @media only screen and (min-width : 48em) {
-                                    padding-block-start : 2rem;
-                                    grid-column         : 7/ -2;
-                                }
-                            }
-                            & figure {
-                                /* Medium */
-                                @media only screen and (min-width : 48em) {
-                                    max-width: unset;
-                                    grid-column : 1 / span 5;
-                                    grid-row    : 1 / -1;
-                                    order       : 1;
-                                }
-                            }
-                            & .rte {
-                                /* Medium */
-                                @media only screen and (min-width : 48em) {
-                                    grid-column       : 7/ -2;
-                                    padding-block-end : 2rem;
-                                }
-                            }
-                            & img {
-                                object-fit : cover;
-                                min-height     : 100%;
-                            }
-                        }
-                    </code>
-                </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/inhalte-speziell-platziert.html 📝
-                </aside>
-            </section>
+
         </section>
 
         <!-- Galerien -->
@@ -549,60 +493,7 @@
             <aside class="notes">
                 https://css.ml-webseiten.de/galerie-mit-css-grid-v2.html 📝
             </aside>
-            <!-- Galerie mit Flex Variante 1-->
-            <section>
-                <h3>Galerie mit Flexbox Variante 1</h3>
-                <pre>
-                    <code data-trim date-noescape>
-                       /* Inhaltselement Galerie */
-                        .content-gallery--flex {
-                            & ul {
-                                display : flex;
-                                flex-wrap : wrap;
-                                gap     : .5rem;
-                            }
-                            & li {
-                                flex: 0 1 200px ;
-                            }
-                        }
-                    </code>
-                </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/galerie-mit-flexbox-v1.html
-                    <ul>
-                        <li>eindimensionales Layoutmodell</li>
-                        <li>Spalten oder Reihen</li>
-                        <li>Umbruch am Zeilen- oder Spaltenende ist möglich</li>
-                        <li>Elternelement wird durch <code>display:flex</code> zum Flex-Container</li>
-                        <li>alle direkten Kinder sind die Flex-Elemente</li>
-                        <li>keine freie Platzierung der Elemente</li>
-                    </ul>📝
-                </aside>
-            </section>
-            <!-- Galerie mit Flex Variante 2-->
-            <section>
-                <h3>Galerie mit Flexbox Variante 2</h3>
-                <pre>
-                    <code data-trim date-noescape>
-                       /* Inhaltselement Galerie */
-                        .content-gallery--flex {
-                            & ul {
-                                display : flex;
-                                flex-wrap : wrap;
-                                gap     : .5rem;
-                            }
-                            & li {
-                                flex: 1 1 200px ;
-                            }
-                        }
-                    </code>
-                </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/galerie-mit-flexbox-v2.html 📝
-                </aside>
-            </section>
+
         </section>
 
         <!-- Boxen -->
@@ -960,10 +851,131 @@
             </section>
         </section>
 
+        <!-- Noch Fragen -->
+        <section>
+            <h1>Noch Fragen?</h1>
+        </section>
+
         <!-- Danke für die Aufmerksamkeit -->
         <section>
             <h1>Danke für die Aufmerksamkeit</h1>
         </section>
+        
+        <!-- Zusatzfolien -->
+        <section data-visbility="uncounted">
+            <!-- Inhalte speziell platziert-->
+            <section>
+                <h2>Inhalte speziell platziert</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                         /* Inhalte speziell platziert */
+                        .content-text--special {
+                            /* Medium */
+                            @media only screen and (min-width : 48em) {
+                                grid-template-rows :  min-content 1fr;
+                            }
+                            &.bg {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    padding-block : 0;
+                                }
+                            }
+                            & h1,
+                            & h2,
+                            & h3,
+                            & h4,
+                            & h5,
+                            & h6 {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    padding-block-start : 2rem;
+                                    grid-column         : 7/ -2;
+                                }
+                            }
+                            & figure {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    max-width: unset;
+                                    grid-column : 1 / span 5;
+                                    grid-row    : 1 / -1;
+                                    order       : 1;
+                                }
+                            }
+                            & .rte {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-column       : 7/ -2;
+                                    padding-block-end : 2rem;
+                                }
+                            }
+                            & img {
+                                object-fit : cover;
+                                min-height     : 100%;
+                            }
+                        }
+                    </code>
+                </pre>
+                <!-- Notizen -->
+                <aside class="notes">
+                    https://css.ml-webseiten.de/inhalte-speziell-platziert.html 📝
+                </aside>
+            </section>
+            <!-- Galerie mit Flex Variante 1-->
+            <section>
+                <h3>Galerie mit Flexbox Variante 1</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Inhaltselement Galerie */
+                        .content-gallery--flex {
+                            & ul {
+                                display : flex;
+                                flex-wrap : wrap;
+                                gap     : .5rem;
+                            }
+                            & li {
+                                flex: 0 1 200px ;
+                            }
+                        }
+                    </code>
+                </pre>
+                <!-- Notizen -->
+                <aside class="notes">
+                    https://css.ml-webseiten.de/galerie-mit-flexbox-v1.html
+                    <ul>
+                        <li>eindimensionales Layoutmodell</li>
+                        <li>Spalten oder Reihen</li>
+                        <li>Umbruch am Zeilen- oder Spaltenende ist möglich</li>
+                        <li>Elternelement wird durch <code>display:flex</code> zum Flex-Container</li>
+                        <li>alle direkten Kinder sind die Flex-Elemente</li>
+                        <li>keine freie Platzierung der Elemente</li>
+                    </ul>📝
+                </aside>
+            </section>
+            <!-- Galerie mit Flex Variante 2-->
+            <section>
+                <h3>Galerie mit Flexbox Variante 2</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Inhaltselement Galerie */
+                        .content-gallery--flex {
+                            & ul {
+                                display : flex;
+                                flex-wrap : wrap;
+                                gap     : .5rem;
+                            }
+                            & li {
+                                flex: 1 1 200px ;
+                            }
+                        }
+                    </code>
+                </pre>
+                <!-- Notizen -->
+                <aside class="notes">
+                    https://css.ml-webseiten.de/galerie-mit-flexbox-v2.html 📝
+                </aside>
+            </section>
+        </section>
+
     </div>
 </div>
 
