@@ -20,50 +20,56 @@
         <section>
             <h1>Modernes CSS in Contao nutzen</h1>
             <p>Nutzung von Grid, Subgrid, Flex und Co in Contao</p>
+            <!-- Notizen -->
             <aside class="notes">
-                Hallo allerseits, heute möchte ich Euch zeigen, wie man modernes CSS in Contao nutzen kann.📝
+                <ul>
+                    <li>mein Name ist Maren Lange</li>
+                    <li>seit 2010 Webdesigner (Freelancer)</li>
+                    <li>Forum: mlweb</li>
+                </ul>
             </aside>
         </section>
 
         <!-- Einleitung -->
         <section>
-            <!-- Über mich-->
-            <section>
-                <h2>Über mich</h2>
-                <ul>
-                    <li>seit 2010 Webdesigner (Freelancer)</li>
-                    <li>Forum: mlweb</li>
-                </ul>
-            </section>
             <!-- Was erwartet Euch -->
             <section>
                 <h2>Was erwartet Euch</h2>
                 <ul>
-                    <li>Komponenten eines Contao-Themes entwickeln</li>
-                    <li>moderne CSS-Eigenschaften</li>
-                    <li>CSS mit seinen neuen Möglichkeiten
+                    <li class="fragment">Komponenten eines Contao-Themes entwickeln</li>
+                    <li class="fragment">moderne CSS-Eigenschaften</li>
+                    <li class="fragment">CSS mit seinen neuen Möglichkeiten
                         <ul>
                             <li>Verschachtelung (Nesting)</li>
                             <li>CSS-Variable</li>
                         </ul>
                     </li>
-                   <li>keine theoretische Abhandlung</li>
                 </ul>
+                <!-- Notizen -->
+                <aside class="notes">
+                    <ul>
+                        <li>ich verwende grundsätzlich alle Eigenschaften, die von allen Major-Browsern unterstützt werden und insgesamt bei einer Unterstützung von über ca. 85% liegen</li>
+                        <li>ich nutze seit einiger Zeit nativen CSS, also kein SCSS</li>
+                        <li>keine theoretische Abhandlung, ihr solltet also grundsätzlich schon mal von den CSS-Eigenschaften insbesondere Grid und Flex gehört haben</li>
+                        <li>Markup von Contao kennen</li>
+                    </ul>📝
+                </aside>
             </section>
             <!-- Was benötigt Ihr -->
             <section>
                 <h2>Was benötigt Ihr?</h2>
                 <ul>
-                    <li>IDE oder CSS-Editor
+                    <li class="fragment">IDE oder CSS-Editor
                         <ul>
                             <li>PHPStorm</li>
                             <li>Visual Studio Code (kostenfreie)</li>
                             <li>jeder CSS-Editor</li>
                         </ul>
                     </li>
-                    <li>Tool zum Komprimieren und Zusammenfassen z.B. <a href="https://lightningcss.dev/" target="_blank">Lightning CSS</a></li>
-                    <li>alternativ SCSS mit Gulp oder Webpack</li>
+                    <li class="fragment">Tool zum Komprimieren und Zusammenfassen z.B. Lightning CSS</li>
+                    <li class="fragment">alternativ SCSS mit Gulp oder Webpack</li>
                 </ul>
+                <!-- Notizen -->
                 <aside class="notes">
                     Projekt in PHP-Storm kurz zeigen und erläutern, cqi - Einheit für Inline-Gröe (Breite) eines Containers 📝
 
@@ -77,31 +83,6 @@
             <section>
                 <h1>Das Seitenlayout</h1>
                 <p>CSS-Grid und Subgrid in Contao verwenden</p>
-            </section>
-            <!--Erläuterung CSS-Grid -->
-            <section>
-                <h2>CSS-Grid kurz erklärt</h2>
-                <ul>
-                    <li>zweidimensionales Gestaltungsraster bestehend aus Zeilen und Spalten</li>
-                    <li>Elemente darin können frei platziert werden</li>
-                    <li>automatische Platzierung ist ebenfalls möglich</li>
-                    <li>Raster wird im Elternelement durch <code>display:grid</code> festgelegt - Grid-Container</li>
-                    <li>alle direkten Kinder sind die Grid-Elemente</li>
-
-                </ul>
-            </section>
-            <!--Erläuterung Subgrid -->
-            <section>
-                <h3>Subgrid und verschachteltes Grid</h3>
-                <ul>
-                    <li>Grids können prinzipiell verschachtelt werden
-                        <ul>
-                            <li>dazu wird ein Grid-Element als Grid-Container erklärt</li>
-                            <li>dieses Grid ist völlig unabhängig vom übergeordneten Grid</li>
-                        </ul>
-                    </li>
-                    <li>Subgrid - übergeordnete Aufteilung in Spalten und/oder Reihen wird im verschachtelten Grid übernommen</li>
-                </ul>
             </section>
             <!-- CSS-Grid fürs Seitenlayout -->
             <section>
@@ -139,9 +120,16 @@
 
                     </code>
                 </pre>
-
+                <!-- Notizen -->
                 <aside class="notes">
-                    https://css.ml-webseiten.de/seitenlayout-mit-grid.html📝
+                    https://css.ml-webseiten.de/seitenlayout-mit-grid.html
+                    <ul>
+                        <li>zweidimensionales Gestaltungsraster bestehend aus Zeilen und Spalten</li>
+                        <li>Elemente darin können frei platziert werden</li>
+                        <li>Raster wird im Elternelement durch <code>display:grid</code> festgelegt - Grid-Container</li>
+                        <li>alle direkten Kinder sind die Grid-Elemente</li>
+
+                    </ul>📝
                 </aside>
             </section>
             <!-- Inhalt begrenzen -->
@@ -205,6 +193,14 @@
                         }
                     </code>
                 </pre>
+                <aside class="notes">
+                    <ul>
+                        <li>& - Nestingselektor, gibt die Beziehung zum Elternelement an</li>
+                        <li>ist bei Klassen und ID-Selektoren nicht zwingend erforderlich</li>
+                        <li>ist nicht für alle modernen Browser erforderlich</li>
+                    </ul>
+                    ,
+                </aside>
             </section>
             <!-- Grid und Subgrid in Main -->
             <section>
@@ -229,9 +225,18 @@
                         }
                     </code>
                 </pre>
-
+                <!--Notizen-->
                 <aside class="notes">
-                    https://css.ml-webseiten.de/subgrid-im-seitenlayout.html 📝
+                    https://css.ml-webseiten.de/subgrid-im-seitenlayout.html
+                    <ul>
+                        <li>Grids können prinzipiell verschachtelt werden
+                            <ul>
+                                <li>dazu wird ein Grid-Element als Grid-Container erklärt</li>
+                                <li>dieses Grid ist völlig unabhängig vom übergeordneten Grid</li>
+                            </ul>
+                        </li>
+                        <li>Subgrid - übergeordnete Aufteilung in Spalten und/oder Reihen wird im verschachtelten Grid übernommen</li>
+                    </ul>📝
                 </aside>
             </section>
             <!-- Elemente im Header und Footer -->
@@ -276,23 +281,26 @@
                 <pre>
                     <code data-trim data-noescape>
                         /* Main */
-                        main {
-                            & > .inside {
-                                display               : grid;
-                                column-gap            : 1rem;
-                                grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
-                                & > .mod_article {
-                                    grid-column           : 1 / -1;
+                        @layer main {
+                            main {
+                                & > .inside {
                                     display               : grid;
-                                    grid-template-columns : subgrid;
-                                    & > * {
-                                        grid-column : 2 / -2;
+                                    column-gap            : 1rem;
+                                    grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
+                                    & > .mod_article {
+                                        grid-column           : 1 / -1;
+                                        display               : grid;
+                                        grid-template-columns : subgrid;
+                                        & > * {
+                                            grid-column : 2 / -2;
+                                        }
                                     }
                                 }
                             }
                         }
                     </code>
                 </pre>
+                <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de/elemente-im-header-und-footer.html 📝
                 </aside>
@@ -321,6 +329,7 @@
                         }
                     </code>
                 </pre>
+                <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de//artikel-mit-hintergrund.html 📝
                 </aside>
@@ -381,7 +390,7 @@
                             & figure {
                                 /* Medium */
                                 @media only screen and (min-width : 48em) {
-                                    grid-column : 2 / span 5;
+                                    & grid-column : 2 / span 5;
                                 }
                             }
                         }
@@ -400,32 +409,23 @@
                             }
                         }
                         .media--right {
-                            & :first-child {
-                                order : 1;
-                            }
-                            & :nth-child(2) {
-                                order : 3;
-                            }
-                            & :nth-child(3) {
-                                order : 2;
-                            }
                             & figure {
                                 /* Medium */
                                 @media only screen and (min-width : 48em) {
                                     grid-column : 9 / -2;
+                                    order : 3;
                                 }
                             }
                             & .rte {
                                 /* Medium */
                                 @media only screen and (min-width : 48em) {
                                     grid-column : 2/ span 7;
-                                    order       : 2;
                                 }
                             }
                         }
                     </code>
                 </pre>
-
+                <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de/inhaltselement-mit-hintergrund.html 📝
                 </aside>
@@ -482,7 +482,7 @@
                         }
                     </code>
                 </pre>
-
+                <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de/inhalte-speziell-platziert.html 📝
                 </aside>
@@ -510,13 +510,14 @@
                         }
                     </code>
                 </pre>
-
+                <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de/galerie-mit-css-grid-v1.html 📝
                 </aside>
             </section>
             <!-- Fünfspaltige Galerie -->
             <section>
+                <h3>Beispiel für eine 5-spaltige Galerie</h3>
                 <pre>
                     <code data-trim date-noescape>
                         .content-gallery {
@@ -544,18 +545,10 @@
                     </code>
                 </pre>
             </section>
-            <!-- Erläuterung Flex -->
-            <section>
-                <h2>Flexbox kurz erklärt</h2>
-                <ul>
-                    <li>eindimensionales Layoutmodell</li>
-                    <li>Spalten oder Reihen</li>
-                    <li>Umbruch am Zeilen- oder Spaltenende ist möglich</li>
-                    <li>Elternelement wird durch <code>display:flex</code> zum Flex-Container</li>
-                    <li>alle direkten Kinder sind die Flex-Elemente</li>
-                    <li>keine freie Platzierung der Elemente</li>
-                </ul>
-            </section>
+            <!-- Notizen -->
+            <aside class="notes">
+                https://css.ml-webseiten.de/galerie-mit-css-grid-v2.html 📝
+            </aside>
             <!-- Galerie mit Flex Variante 1-->
             <section>
                 <h3>Galerie mit Flexbox Variante 1</h3>
@@ -574,9 +567,17 @@
                         }
                     </code>
                 </pre>
-
+                <!-- Notizen -->
                 <aside class="notes">
-                    https://css.ml-webseiten.de/galerie-mit-flexbox-v1.html 📝
+                    https://css.ml-webseiten.de/galerie-mit-flexbox-v1.html
+                    <ul>
+                        <li>eindimensionales Layoutmodell</li>
+                        <li>Spalten oder Reihen</li>
+                        <li>Umbruch am Zeilen- oder Spaltenende ist möglich</li>
+                        <li>Elternelement wird durch <code>display:flex</code> zum Flex-Container</li>
+                        <li>alle direkten Kinder sind die Flex-Elemente</li>
+                        <li>keine freie Platzierung der Elemente</li>
+                    </ul>📝
                 </aside>
             </section>
             <!-- Galerie mit Flex Variante 2-->
@@ -597,7 +598,7 @@
                         }
                     </code>
                 </pre>
-
+                <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de/galerie-mit-flexbox-v2.html 📝
                 </aside>
@@ -618,32 +619,28 @@
                        /* Textelemente als Boxen */
                         .content-text--box {
                             container-type : inline-size;
+                            display   : flex;
+                            flex-flow : column;
+                            gap       : 1rem;
                             &.bg {
                                 padding-block-start : 0;
                             }
-                            &.media--above,
-                            &.media--below,
-                            &.media--left,
-                            &.media--right {
-                                display   : flex;
-                                flex-flow : column;
-                                & h1,
-                                & h2,
-                                & h3,
-                                & h4,
-                                & h5,
-                                & h6 {
-                                    margin-block   : 1rem 0;
-                                    padding-inline : 1rem;
-                                }
-                                & figure {
-                                    width  : 100%;
-                                    margin : 0;
-                                    order  : -1;
-                                }
-                                & .rte {
-                                    padding : 1rem;
-                                }
+                            & h1,
+                            & h2,
+                            & h3,
+                            & h4,
+                            & h5,
+                            & h6 {
+                                padding-inline : 1rem;
+                        	    margin         : 0;
+                            }
+                            & figure {
+                                width  : 100%;
+                                margin : 0;
+                                order  : -1;
+                            }
+                            & .rte {
+                                padding-inline : 1rem;
                             }
                         }
                     </code>
@@ -690,7 +687,7 @@
                         }
                     </code>
                 </pre>
-
+                <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de/textelemente-als-boxen-v1.html 📝
                 </aside>
@@ -723,7 +720,7 @@
                     </code>
                 </pre>
                 <aside class="notes">
-                    bevor wir uns der Platzierung der Inhaltselemente widmen, wollen wir das Grid verfeinern 📝
+                    Verbesserung durch Nutzung von Variablen 📝
                 </aside>
             </section>
             <!-- Hilfsklassen Grid -->
@@ -921,20 +918,15 @@
                 <h3>Verwendung der Elementgruppe</h3>
                 <pre>
                     <code data-trim date-noescape>
-                       /* Textboxen mit Elementgruppe */
-                        .content-gallery--flex {
-                            & ul {
-                                display : flex;
-                                flex-wrap : wrap;
-                                gap     : .5rem;
-                            }
-                            & li {
-                                flex: 1 1 200px ;
-                            }
+                        /* Boxen in der Elementgruppe */
+                        .content-element-group--box {
+                            display: grid;
+                            grid-gap: 1rem;
+                            grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
                         }
                     </code>
                 </pre>
-
+                <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de/textelemente-als-boxen-v2.html 📝
                 </aside>
@@ -950,9 +942,9 @@
             <!--Zusammenfassung -->
             <section>
                 <ul>
-                    <li>modernes CSS erleichtert die Umsetzung eines Layouts</li>
-                    <li>Templates nur bei Bedarf anpassen</li>
-                    <li>Verwendung von Klassen fürs Styling
+                    <li class="fragment">modernes CSS erleichtert die Umsetzung eines Layouts</li>
+                    <li  class="fragment">Templateanpassungen sind dafür nicht erforderlich</li>
+                    <li  class="fragment">Verwendung von Klassen fürs Styling
                         <ul>
                             <li>manuelles Eintragen der Klassen</li>
                             <li>Einsatz einer Erweiterung um vorgefertigte Klassen wählbar zu machen
