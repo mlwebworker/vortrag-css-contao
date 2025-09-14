@@ -574,13 +574,193 @@
                                     grid-column: 8 / span 3;
                                 }
                             }
-
+                            &:last-of-type {
+                                /* Medium */
+                                @media only screen and (min-width: 48em) {
+                                    grid-column: 8 / span 6;
+                                }
+                                /* Large */
+                                @media only screen and (min-width: 64em) {
+                                    grid-column: 11 / -2;
+                                }
+                            }
                         }
                     </code>
                 </pre>
                 <!-- Notizen -->
                 <aside class="notes">
                     https://css.ml-webseiten.de/textelemente-als-boxen-v1.html 📝
+                </aside>
+            </section>
+            <!-- Boxen Variante 2-->
+            <section>
+                <h2>Textboxen Variante 2</h2>
+                <h3>Verwendung der Elementgruppe</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                        /* Boxen in der Elementgruppe */
+                        .content-element-group--box {
+                            display: grid;
+                            grid-gap: 1rem;
+                            grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
+                        }
+                    </code>
+                </pre>
+                <!-- Notizen -->
+                <aside class="notes">
+                    https://css.ml-webseiten.de/textelemente-als-boxen-v2.html 📝
+                </aside>
+            </section>
+        </section>
+
+        <!-- Zusammenfassung -->
+        <section>
+            <!-- Titelfolie Zusammenfassung  -->
+            <section>
+                <h1>Zusammenfassung</h1>
+            </section>
+            <!--Zusammenfassung -->
+            <section>
+                <ul>
+                    <li class="fragment">modernes CSS erleichtert die Umsetzung eines Layouts</li>
+                    <li  class="fragment">Templateanpassungen sind dafür nicht erforderlich</li>
+                    <li  class="fragment">Verwendung von Klassen fürs Styling
+                        <ul>
+                            <li>manuelles Eintragen der Klassen</li>
+                            <li>Einsatz einer Erweiterung um vorgefertigte Klassen wählbar zu machen
+                                <ul>
+                                    <li><a href="https://extensions.contao.org/?p=oveleon/contao-component-style-manager">Stylemanager von Oveleon</a></li>
+                                    <li><a href="https://extensions.contao.org/?q=style&pages=1&p=erdmannfreunde/theme-toolbox">Theme Toolbox von Erdmann und Freunde</a></li>
+                                    <li><a href="https://extensions.contao.org/?q=style&pages=1&p=pdir/css-style-selector-bundle">CSS Style Selector Fork von pdir</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- Noch Fragen -->
+        <section>
+            <h1>Noch Fragen?</h1>
+        </section>
+
+        <!-- Danke für die Aufmerksamkeit -->
+        <section>
+            <h1>Danke für die Aufmerksamkeit</h1>
+        </section>
+        
+        <!-- Zusatzfolien -->
+        <section data-visbility="uncounted">
+            <!-- Inhalte speziell platziert-->
+            <section>
+                <h2>Inhalte speziell platziert</h2>
+                <pre>
+                    <code data-trim data-noescape>
+                         /* Inhalte speziell platziert */
+                        .content-text--special {
+                            /* Medium */
+                            @media only screen and (min-width : 48em) {
+                                grid-template-rows :  min-content 1fr;
+                            }
+                            &.bg {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    padding-block : 0;
+                                }
+                            }
+                            & h1,
+                            & h2,
+                            & h3,
+                            & h4,
+                            & h5,
+                            & h6 {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    padding-block-start : 2rem;
+                                    grid-column         : 7/ -2;
+                                }
+                            }
+                            & figure {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    max-width: unset;
+                                    grid-column : 1 / span 5;
+                                    grid-row    : 1 / -1;
+                                    order       : 1;
+                                }
+                            }
+                            & .rte {
+                                /* Medium */
+                                @media only screen and (min-width : 48em) {
+                                    grid-column       : 7/ -2;
+                                    padding-block-end : 2rem;
+                                }
+                            }
+                            & img {
+                                object-fit : cover;
+                                min-height     : 100%;
+                            }
+                        }
+                    </code>
+                </pre>
+                <!-- Notizen -->
+                <aside class="notes">
+                    https://css.ml-webseiten.de/inhalte-speziell-platziert.html 📝
+                </aside>
+            </section>
+            <!-- Galerie mit Flex Variante 1-->
+            <section>
+                <h3>Galerie mit Flexbox Variante 1</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Inhaltselement Galerie */
+                        .content-gallery--flex {
+                            & ul {
+                                display : flex;
+                                flex-wrap : wrap;
+                                gap     : .5rem;
+                            }
+                            & li {
+                                flex: 0 1 200px ;
+                            }
+                        }
+                    </code>
+                </pre>
+                <!-- Notizen -->
+                <aside class="notes">
+                    https://css.ml-webseiten.de/galerie-mit-flexbox-v1.html
+                    <ul>
+                        <li>eindimensionales Layoutmodell</li>
+                        <li>Spalten oder Reihen</li>
+                        <li>Umbruch am Zeilen- oder Spaltenende ist möglich</li>
+                        <li>Elternelement wird durch <code>display:flex</code> zum Flex-Container</li>
+                        <li>alle direkten Kinder sind die Flex-Elemente</li>
+                        <li>keine freie Platzierung der Elemente</li>
+                    </ul>📝
+                </aside>
+            </section>
+            <!-- Galerie mit Flex Variante 2-->
+            <section>
+                <h3>Galerie mit Flexbox Variante 2</h3>
+                <pre>
+                    <code data-trim date-noescape>
+                       /* Inhaltselement Galerie */
+                        .content-gallery--flex {
+                            & ul {
+                                display : flex;
+                                flex-wrap : wrap;
+                                gap     : .5rem;
+                            }
+                            & li {
+                                flex: 1 1 200px ;
+                            }
+                        }
+                    </code>
+                </pre>
+                <!-- Notizen -->
+                <aside class="notes">
+                    https://css.ml-webseiten.de/galerie-mit-flexbox-v2.html 📝
                 </aside>
             </section>
             <!-- Grid in Main verfeinern -->
@@ -803,177 +983,6 @@
                     </code>
                 </pre>
             </section>
-            <!-- Boxen Variante 2-->
-            <section>
-                <h2>Textboxen Variante 2</h2>
-                <h3>Verwendung der Elementgruppe</h3>
-                <pre>
-                    <code data-trim date-noescape>
-                        /* Boxen in der Elementgruppe */
-                        .content-element-group--box {
-                            display: grid;
-                            grid-gap: 1rem;
-                            grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
-                        }
-                    </code>
-                </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/textelemente-als-boxen-v2.html 📝
-                </aside>
-            </section>
-        </section>
-
-        <!-- Zusammenfassung -->
-        <section>
-            <!-- Titelfolie Zusammenfassung  -->
-            <section>
-                <h1>Zusammenfassung</h1>
-            </section>
-            <!--Zusammenfassung -->
-            <section>
-                <ul>
-                    <li class="fragment">modernes CSS erleichtert die Umsetzung eines Layouts</li>
-                    <li  class="fragment">Templateanpassungen sind dafür nicht erforderlich</li>
-                    <li  class="fragment">Verwendung von Klassen fürs Styling
-                        <ul>
-                            <li>manuelles Eintragen der Klassen</li>
-                            <li>Einsatz einer Erweiterung um vorgefertigte Klassen wählbar zu machen
-                                <ul>
-                                    <li><a href="https://extensions.contao.org/?p=oveleon/contao-component-style-manager">Stylemanager von Oveleon</a></li>
-                                    <li><a href="https://extensions.contao.org/?q=style&pages=1&p=erdmannfreunde/theme-toolbox">Theme Toolbox von Erdmann und Freunde</a></li>
-                                    <li><a href="https://extensions.contao.org/?q=style&pages=1&p=pdir/css-style-selector-bundle">CSS Style Selector Fork von pdir</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-        </section>
-
-        <!-- Noch Fragen -->
-        <section>
-            <h1>Noch Fragen?</h1>
-        </section>
-
-        <!-- Danke für die Aufmerksamkeit -->
-        <section>
-            <h1>Danke für die Aufmerksamkeit</h1>
-        </section>
-        
-        <!-- Zusatzfolien -->
-        <section data-visbility="uncounted">
-            <!-- Inhalte speziell platziert-->
-            <section>
-                <h2>Inhalte speziell platziert</h2>
-                <pre>
-                    <code data-trim data-noescape>
-                         /* Inhalte speziell platziert */
-                        .content-text--special {
-                            /* Medium */
-                            @media only screen and (min-width : 48em) {
-                                grid-template-rows :  min-content 1fr;
-                            }
-                            &.bg {
-                                /* Medium */
-                                @media only screen and (min-width : 48em) {
-                                    padding-block : 0;
-                                }
-                            }
-                            & h1,
-                            & h2,
-                            & h3,
-                            & h4,
-                            & h5,
-                            & h6 {
-                                /* Medium */
-                                @media only screen and (min-width : 48em) {
-                                    padding-block-start : 2rem;
-                                    grid-column         : 7/ -2;
-                                }
-                            }
-                            & figure {
-                                /* Medium */
-                                @media only screen and (min-width : 48em) {
-                                    max-width: unset;
-                                    grid-column : 1 / span 5;
-                                    grid-row    : 1 / -1;
-                                    order       : 1;
-                                }
-                            }
-                            & .rte {
-                                /* Medium */
-                                @media only screen and (min-width : 48em) {
-                                    grid-column       : 7/ -2;
-                                    padding-block-end : 2rem;
-                                }
-                            }
-                            & img {
-                                object-fit : cover;
-                                min-height     : 100%;
-                            }
-                        }
-                    </code>
-                </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/inhalte-speziell-platziert.html 📝
-                </aside>
-            </section>
-            <!-- Galerie mit Flex Variante 1-->
-            <section>
-                <h3>Galerie mit Flexbox Variante 1</h3>
-                <pre>
-                    <code data-trim date-noescape>
-                       /* Inhaltselement Galerie */
-                        .content-gallery--flex {
-                            & ul {
-                                display : flex;
-                                flex-wrap : wrap;
-                                gap     : .5rem;
-                            }
-                            & li {
-                                flex: 0 1 200px ;
-                            }
-                        }
-                    </code>
-                </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/galerie-mit-flexbox-v1.html
-                    <ul>
-                        <li>eindimensionales Layoutmodell</li>
-                        <li>Spalten oder Reihen</li>
-                        <li>Umbruch am Zeilen- oder Spaltenende ist möglich</li>
-                        <li>Elternelement wird durch <code>display:flex</code> zum Flex-Container</li>
-                        <li>alle direkten Kinder sind die Flex-Elemente</li>
-                        <li>keine freie Platzierung der Elemente</li>
-                    </ul>📝
-                </aside>
-            </section>
-            <!-- Galerie mit Flex Variante 2-->
-            <section>
-                <h3>Galerie mit Flexbox Variante 2</h3>
-                <pre>
-                    <code data-trim date-noescape>
-                       /* Inhaltselement Galerie */
-                        .content-gallery--flex {
-                            & ul {
-                                display : flex;
-                                flex-wrap : wrap;
-                                gap     : .5rem;
-                            }
-                            & li {
-                                flex: 1 1 200px ;
-                            }
-                        }
-                    </code>
-                </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/galerie-mit-flexbox-v2.html 📝
-                </aside>
-            </section>
         </section>
 
     </div>
@@ -993,7 +1002,7 @@
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
     });
-    // Reveal.configure({ showNotes: true });
+    Reveal.configure({ showNotes: true });
 </script>
 
 </body>
