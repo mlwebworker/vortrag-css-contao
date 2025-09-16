@@ -49,7 +49,8 @@
                         <li>ich nutze seit einiger Zeit nativen CSS, also kein SCSS</li>
                         <li>keine theoretische Abhandlung, ihr solltet also Grundkenntnisse in CSS haben und insbesondere schon von Grid und Flex gehört haben</li>
                         <li>Markup von Contao kennen</li>
-                    </ul>📝
+                    </ul>
+                    📝
                 </aside>
             </section>
             <!-- Was wird benötigt -->
@@ -129,7 +130,8 @@
                         <li>Raster wird im Elternelement durch <code>display:grid</code> festgelegt - Grid-Container</li>
                         <li>alle direkten Kinder sind die Grid-Elemente</li>
 
-                    </ul>📝
+                    </ul>
+                    📝
                 </aside>
             </section>
             <!-- Inhalt begrenzen -->
@@ -161,8 +163,8 @@
                         }
                         header .inside {
                             display               : grid;
-                            column-gap            : 1rem;
                             grid-template-columns : minmax(.5rem, 1fr) minmax(0, 1200px) minmax(.5rem, 1fr);
+                            column-gap            : 1rem;
                         }
                     </code>
                 </pre>
@@ -178,8 +180,8 @@
                             grid-area: header;
                             & .inside {
                                 display               : grid;
-                                column-gap            : 1rem;
                                 grid-template-columns : minmax(.5rem, 1fr) minmax(0, 1200px) minmax(.5rem, 1fr);
+                                column-gap            : 1rem;
                             }
                         }
                         /* Footer */
@@ -187,8 +189,8 @@
                             grid-area: footer;
                             & .inside {
                                 display               : grid;
-                                column-gap            : 1rem;
                                 grid-template-columns : minmax(.5rem, 1fr) minmax(0, 1200px) minmax(.5rem, 1fr);
+                                column-gap            : 1rem;
                             }
                         }
                     </code>
@@ -211,8 +213,8 @@
                         main {
                             & .inside {
                                 display               : grid;
-                                column-gap            : 1rem;
                                 grid-template-columns : minmax(.5rem, 1fr) minmax(0, 1200px) minmax(.5rem, 1fr);
+                                column-gap            : 1rem;
                                 & > .mod_article {
                                     grid-column           : 1 / -1;
                                     display               : grid;
@@ -236,7 +238,8 @@
                             </ul>
                         </li>
                         <li>Subgrid - übergeordnete Aufteilung in Spalten und/oder Reihen wird im verschachtelten Grid übernommen</li>
-                    </ul>📝
+                    </ul>
+                    📝
                 </aside>
             </section>
             <!-- Elemente im Header und Footer -->
@@ -249,8 +252,8 @@
                             grid-area: header;
                             & .inside {
                                 display               : grid;
-                                column-gap            : 1rem;
                                 grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
+                                column-gap            : 1rem;
                             }
                             & .logo {
                                 grid-column : 2 / span 3;
@@ -265,8 +268,8 @@
                             grid-area: footer;
                             & > .inside {
                                 display               : grid;
-                                column-gap            : 1rem;
                                 grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
+                                column-gap            : 1rem;
                                 & .copyright {
                                     grid-column : 2 / -2;
                                 }
@@ -285,8 +288,8 @@
                             main {
                                 & > .inside {
                                     display               : grid;
-                                    column-gap            : 1rem;
                                     grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 6rem)) minmax(.5rem, 1fr);
+                                    column-gap            : 1rem;
                                     & > .mod_article {
                                         grid-column           : 1 / -1;
                                         display               : grid;
@@ -344,6 +347,7 @@
                             grid-column           : 1 / -1;
                             display               : grid;
                             grid-template-columns : subgrid;
+                            row-gap : 1rem;
                             & > * {
                                 grid-column : 2 / -2;
                             }
@@ -378,13 +382,6 @@
                 <pre>
                     <code data-trim data-noescape>
                         /* Inhaltselement Text */
-                        .media--above,
-                        .media--below,
-                        .media--left,
-                        .media--right {
-                            display : grid;
-                            row-gap : 1rem;
-                        }
                         .media--above,
                         .media--below {
                             & figure {
@@ -456,7 +453,7 @@
                 </pre>
                 <!-- Notizen -->
                 <aside class="notes">
-                    https://css.ml-webseiten.de/galerie-mit-css-grid-v1.html 📝
+                    https://css.ml-webseiten.de/galerie-mit-css-grid.html 📝
                 </aside>
             </section>
             <!-- Fünfspaltige Galerie -->
@@ -491,18 +488,18 @@
             </section>
             <!-- Notizen -->
             <aside class="notes">
-                https://css.ml-webseiten.de/galerie-mit-css-grid-v2.html 📝
+                https://css.ml-webseiten.de/galerie-mit-css-grid-variante.html 📝
             </aside>
 
         </section>
 
-        <!-- Boxen -->
+        <!-- Textboxen -->
         <section>
-            <!-- Titelfolie Boxen -->
+            <!-- Titelfolie Textboxen -->
             <section>
-                <h1>Boxen</h1>
+                <h1>Textboxen</h1>
             </section>
-            <!-- Boxen Variante 1-->
+            <!-- Textboxen-->
             <section>
                 <h2>Textelement als Box stylen</h2>
                 <pre>
@@ -546,14 +543,14 @@
                         /* Boxen in der Elementgruppe */
                         .content-element-group--box {
                             display: grid;
-                            gap: 1rem;
                             grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
+                            gap: 1rem;
                         }
                     </code>
                 </pre>
                 <!-- Notizen -->
                 <aside class="notes">
-                    https://css.ml-webseiten.de/textelemente-als-boxen-v2.html 📝
+                    https://css.ml-webseiten.de/textelemente-als-boxen.html 📝
                 </aside>
             </section>
         </section>
