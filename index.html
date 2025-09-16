@@ -347,7 +347,7 @@
                             grid-column           : 1 / -1;
                             display               : grid;
                             grid-template-columns : subgrid;
-                            row-gap : 1rem;
+
                             & > * {
                                 grid-column : 2 / -2;
                             }
@@ -382,6 +382,9 @@
                 <pre>
                     <code data-trim data-noescape>
                         /* Inhaltselement Text */
+                        .media {
+                            row-gap : 1rem;
+                        }
                         .media--above,
                         .media--below {
                             & figure {
@@ -511,7 +514,7 @@
                             flex-flow : column;
                             gap       : 1rem;
                             &.bg {
-                                padding-block-start : 0;
+                                padding-block: 0 1rem;
                             }
                             & h1,
                             & h2,
