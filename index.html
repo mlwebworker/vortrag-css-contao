@@ -46,7 +46,7 @@
                 <aside class="notes">
                     <ul>
                         <li>ich nutze seit einiger Zeit nativen CSS, also kein SCSS</li>
-                        <li>keine theoretische Abhandlung über die modernen CSS-Eigenschaften sein, sondern wir werden diese lediglich in Beispielen nutzen </li>
+                        <li>keine theoretische Abhandlung über die modernen CSS-Eigenschaften sein, sondern wir werden diese lediglich in Beispielwebsiteen nutzen </li>
                         <li>ihr solltet also Grundkenntnisse in CSS haben und insbesondere schon von Grid und Flex gehört haben</li>
                         <li>Markup von Contao kennen</li>
                     </ul>
@@ -124,20 +124,9 @@
                             color         : var(--clr-header);
                             padding-block         : 2rem;
                         }
-
                     </code>
                 </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/seitenlayout-mit-grid.html
-                    <ul>
-                        <li>zweidimensionales Gestaltungsraster bestehend aus Zeilen und Spalten</li>
-                        <li>Elemente darin können frei platziert werden</li>
-                        <li>Raster wird im Elternelement durch <code>display:grid</code> festgelegt - Grid-Container</li>
-                        <li>alle direkten Kinder sind die Grid-Elemente</li>
-                    </ul>
-                    📝
-                </aside>
+                <p class="beispiel"><a href="https://vortrag-css.ml-webseiten.de/index.html">Beispielwebsite</a></p>
             </section>
             <!-- Grid im Header - Schreibweise ohne Verschachtelung (Header) -->
             <section>
@@ -197,7 +186,6 @@
                         <li>ist bei Klassen und ID-Selektoren nicht zwingend erforderlich, bei Typselektoren aber schon</li>
                         <li>ist nicht für alle modernen Browser erforderlich</li>
                     </ul>
-                    ,
                 </aside>
             </section>
             <!-- Grid und Subgrid in Main -->
@@ -223,10 +211,10 @@
                         }
                     </code>
                 </pre>
+                <p class="beispiel"><a href="https://vortrag-css.ml-webseiten.de/subgrid-im-seitenlayout.html">Beispielwebsite</a></p>
                 <!--Notizen-->
                 <aside class="notes">
-                    <p>>https://css.ml-webseiten.de/subgrid-im-seitenlayout.html</p>
-                    <p>Subgrid - übergeordnete Aufteilung in Spalten und/oder Reihen wird im verschachtelten Grid übernommen</p>
+                   <p>Subgrid - übergeordnete Aufteilung in Spalten und/oder Reihen wird im verschachtelten Grid übernommen</p>
                 </aside>
             </section>
             <!-- Elemente im Header und Footer -->
@@ -296,10 +284,7 @@
                         }
                     </code>
                 </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/elemente-im-header-und-footer.html 📝
-                </aside>
+                <p class="beispiel"><a href="https://vortrag-css.ml-webseiten.de/elemente-im-header-und-footer.html">Beispielwebsite</a></p>
             </section>
         </section>
 
@@ -325,10 +310,7 @@
                         }
                     </code>
                 </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de//artikel-mit-hintergrund.html 📝
-                </aside>
+                <p class="beispiel"><a href="https://vortrag-css.ml-webseiten.de/artikel-mit-hintergrund.html">Beispielwebsite</a></p>
             </section>
             <!-- Hilfsklassen festlegen -->
             <section>
@@ -364,7 +346,6 @@
                             background : var(--neutral-dark);
                             color      : var(--inverse);
                         }
-
                     </code>
                 </pre>
             </section>
@@ -417,12 +398,8 @@
                         }
                     </code>
                 </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/inhaltselement-mit-hintergrund.html 📝
-                </aside>
+                <p class="beispiel"><a href="https://vortrag-css.ml-webseiten.de/inhaltselement-mit-hintergrund.html">Beispielwebsite</a></p>
             </section>
-
         </section>
 
         <!-- Galerien -->
@@ -446,14 +423,11 @@
                         }
                     </code>
                 </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/galerie-mit-css-grid.html 📝
-                </aside>
+                <p class="beispiel"><a href="https://vortrag-css.ml-webseiten.de/galerie-mit-css-grid.html">Beispielwebsite</a></p>
             </section>
             <!-- Fünfspaltige Galerie -->
             <section>
-                <h3>Beispiel für eine 5-spaltige Galerie</h3>
+                <h3>Beispielwebsite für eine 5-spaltige Galerie</h3>
                 <pre>
                     <code data-trim date-noescape>
                         .content-gallery {
@@ -481,13 +455,8 @@
                     </code>
                 </pre>
             </section>
-            <!-- Notizen -->
-            <aside class="notes">
-                https://css.ml-webseiten.de/galerie-mit-css-grid-variante.html 📝
-            </aside>
-
+            <p class="beispiel"><a href="https://vortrag-css.ml-webseiten.de/galerie-mit-css-grid-variante.html">Beispielwebsite</a></p>
         </section>
-
         <!-- Textboxen -->
         <section>
             <!-- Titelfolie Textboxen -->
@@ -543,10 +512,7 @@
                         }
                     </code>
                 </pre>
-                <!-- Notizen -->
-                <aside class="notes">
-                    https://css.ml-webseiten.de/textelemente-als-boxen.html 📝
-                </aside>
+                <p class="beispiel"><a href="https://vortrag-css.ml-webseiten.de/textelemente-als-boxen">Beispielwebsite</a></p>
             </section>
         </section>
 
@@ -566,9 +532,9 @@
                             <li>manuelles Eintragen der Klassen</li>
                             <li>Einsatz einer Erweiterung um vorgefertigte Klassen wählbar zu machen
                                 <ul>
-                                    <li><a href="https://extensions.contao.org/?p=oveleon/contao-component-style-manager">Stylemanager von Oveleon</a></li>
-                                    <li><a href="https://extensions.contao.org/?q=style&pages=1&p=erdmannfreunde/theme-toolbox">Theme Toolbox von Erdmann und Freunde</a></li>
-                                    <li><a href="https://extensions.contao.org/?q=style&pages=1&p=pdir/css-style-selector-bundle">CSS Style Selector (Fork von pdir)</a></li>
+                                    <li>Stylemanager von Oveleon</li>
+                                    <li>Theme Toolbox von Erdmann und Freunde</li>
+                                    <li>CSS Style Selector (Fork von pdir)</li>
                                 </ul>
                             </li>
                         </ul>
