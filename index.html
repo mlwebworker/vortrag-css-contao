@@ -22,7 +22,7 @@
             <p>Nutzung von Grid, Subgrid, Flex und Co in Contao</p>
             <!-- Notizen -->
             <aside class="notes">
-                <p>Hallo allerseits, mein Name ist Maren Lange. <br>Ich arbeite seit 2010 als Webdesigner mit Contao und möchte Euch heute zeigen, wie man modernes CSS in Contao nutzen kann - und zwar ohne Templateanpassungen.
+                <p>Hallo allerseits, mein Name ist Maren Lange. <br>Ich arbeite seit 2010 als Webdesignerin mit Contao und möchte Euch heute zeigen, wie man modernes CSS in Contao nutzen kann - und zwar ohne Templateanpassungen.
                 </p>
             </aside>
         </section>
@@ -46,7 +46,8 @@
                 <aside class="notes">
                     <ul>
                         <li>ich nutze seit einiger Zeit nativen CSS, also kein SCSS</li>
-                        <li>Es wird hier keine theoretische Abhandlung über die modernen CSS-Eigenschaften sein, sondern wir werden diese lediglich in Beispielen nutzen, ihr solltet also Grundkenntnisse in CSS haben und insbesondere schon von Grid und Flex gehört haben</li>
+                        <li>keine theoretische Abhandlung über die modernen CSS-Eigenschaften sein, sondern wir werden diese lediglich in Beispielen nutzen </li>
+                        <li>ihr solltet also Grundkenntnisse in CSS haben und insbesondere schon von Grid und Flex gehört haben</li>
                         <li>Markup von Contao kennen</li>
                     </ul>
                     📝
@@ -119,6 +120,9 @@
                         /* Footer */
                         footer {
                             grid-area: footer;
+                            background    : var(--bg-header);
+                            color         : var(--clr-header);
+                            padding-block         : 2rem;
                         }
 
                     </code>
@@ -233,7 +237,10 @@
                         /* Header */
                         header {
                             grid-area: header;
-                            & >  .inside {
+                            background    : var(--bg-footer);
+                            color         : var(--clr-footer);
+                            padding-block : 2rem;
+                            & > .inside {
                                 display               : grid;
                                 grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 5rem)) minmax(.5rem, 1fr);
                                 column-gap            : 1rem;
@@ -249,6 +256,9 @@
                         /* Footer */
                         footer {
                             grid-area: footer;
+                            background    : var(--bg-footer);
+                            color         : var(--clr-footer);
+                            padding-block : 2rem;
                             & > .inside {
                                 display               : grid;
                                 grid-template-columns : minmax(.5rem, 1fr) repeat(12, minmax(0, 5rem)) minmax(.5rem, 1fr);
