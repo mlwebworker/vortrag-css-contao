@@ -507,8 +507,15 @@
                         /* Boxen in der Elementgruppe */
                         .content-element-group--box {
                             display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
                             gap: 1rem;
+                            /* Medium */
+                            @media only screen and (min-width: 48em) {
+                                grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+                            }
+                            /* Large */
+                            @media only screen and (min-width: 64em) {
+                                grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+                            }
                         }
                     </code>
                 </pre>
@@ -518,29 +525,23 @@
 
         <!-- Zusammenfassung -->
         <section>
-            <!-- Titelfolie Zusammenfassung  -->
-            <section>
-                <h1>Zusammenfassung</h1>
-            </section>
-            <!--Zusammenfassung -->
-            <section>
-                <ul>
-                    <li>modernes CSS erleichtert die Umsetzung eines Layouts</li>
-                    <li class="fragment">Templateanpassungen sind dafür nicht erforderlich</li>
-                    <li class="fragment">Verwendung von Klassen fürs Styling
-                        <ul>
-                            <li>manuelles Eintragen der Klassen</li>
-                            <li>Einsatz einer Erweiterung um vorgefertigte Klassen wählbar zu machen
-                                <ul>
-                                    <li>Stylemanager von Oveleon</li>
-                                    <li>Theme Toolbox von Erdmann und Freunde</li>
-                                    <li>CSS Style Selector (Fork von pdir)</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
+            <h1>Zusammenfassung</h1>
+            <ul>
+                <li>modernes CSS erleichtert die Umsetzung eines Layouts</li>
+                <li class="fragment">Templateanpassungen sind dafür nicht erforderlich</li>
+                <li class="fragment">Verwendung von Klassen fürs Styling
+                    <ul>
+                        <li>manuelles Eintragen der Klassen</li>
+                        <li>Einsatz einer Erweiterung um vorgefertigte Klassen wählbar zu machen
+                            <ul>
+                                <li>Stylemanager von Oveleon</li>
+                                <li>Theme Toolbox von Erdmann und Freunde</li>
+                                <li>CSS Style Selector (Fork von pdir)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <!-- Noch Fragen -->
